@@ -10,7 +10,7 @@ https://github.com/mxgxw/MFRC522-python
 
 ## Pins
 
-
+| name | pin   | usage      |
 |------|-------|------------|
 | SDA  | 24    | GPIO8      |
 | SCK  | 23    | GPIO11     |
