@@ -8,7 +8,7 @@ import binascii
 import hashlib
 
 
-class msc:
+class mcs:
 
 
     def XOR_rshift_calc(self, DataList):

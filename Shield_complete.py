@@ -6,7 +6,7 @@ import MFRC522
 import signal
 import re
 import time
-import msc
+import mcs
 import random
 
 continue_reading = True
@@ -26,7 +26,7 @@ def end_read(signal,frame):
 if __name__=="__main__":
 
         
-        Shield = msc.msc()
+        Shield = mcs.mcs()
         
 
         # Hook the SIGINT
