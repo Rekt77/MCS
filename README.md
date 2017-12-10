@@ -1,7 +1,9 @@
 MCS(MIFARE Classic Shield)
 ============================
 > This script runs only in raspberry pi
+
 > mcs.py is a small class to interface with the NFC reader Module MFRC522 on the Raspberry Pi.
+
 > This code requires you to have MFRC522 installed from the following repository:
 https://github.com/mxgxw/MFRC522-python
 
