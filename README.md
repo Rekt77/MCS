@@ -5,8 +5,13 @@ MCS(MIFARE Classic Shield)
 > This code requires you to have MFRC522 installed from the following repository:
 https://github.com/mxgxw/MFRC522-python
 
-##Examples
+## Examples
 > This repository includes a couple of examples showing how to protect MIFARE Classic(bit shift,XOR,CRC32,MD5)
+
+## Usage
+> Import the class by importing mcs.py top of your script.
+> For more info see the examples.
+
 
 ## Pins
 
@@ -20,6 +25,3 @@ https://github.com/mxgxw/MFRC522-python
 | RST  | 22    | GPIO25     |
 | 3.3V | 1     | 3V3        |
 
-##Usage
-> Import the class by importing mcs.py top of your script.
-> For more info see the examples.
