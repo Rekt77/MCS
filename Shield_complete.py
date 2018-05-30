@@ -65,11 +65,42 @@ if __name__=="__main__":
                             [0x66,0x77,0x63,0x6F,0x69,0x6E]
                            ]
 
+                KeyListA=[[131, 67, 18, 236, 73, 164],
+                          [195, 147, 248, 205, 163, 37],
+                          [181, 182, 99, 34, 200, 108],
+                          [11, 110, 79, 98, 124, 247],
+                          [140, 233, 164, 37, 17, 223],
+                          [250, 148, 187, 77, 136, 91],
+                          [179, 166, 220, 58, 116, 197],
+                          [220, 56, 81, 140, 208, 196],
+                          [178, 169, 122, 97, 145, 251],
+                          [53, 191, 46, 145, 184, 193],
+                          [91, 116, 57, 106, 147, 216],
+                          [199, 26, 99, 193, 129, 79],
+                          [222, 212, 198, 107, 68, 21],
+                          [82, 183, 252, 37, 225, 11],
+                          [131, 127, 48, 207, 253, 166],
+                          [177, 62, 24, 111, 65, 250]]
+
+                KeyListB=[[128, 205, 67, 75, 180, 124],
+                          [124, 135, 3, 135, 142, 203],
+                          [9, 186, 30, 210, 107, 98],
+                          [134, 158, 239, 12, 148, 144],
+                          [191, 228, 208, 93, 65, 11],
+                          [166, 213, 132, 196, 211, 8],
+                          [139, 159, 96, 53, 236, 41],
+                          [114, 171, 78, 6, 30, 50],
+                          [13, 171, 254, 34, 35, 198],
+                          [86, 144, 12, 216, 40, 248],
+                          [3, 7, 215, 95, 149, 168],
+                          [14, 2, 120, 174, 188, 216],
+                          [134, 14, 30, 146, 27, 228],
+                          [101, 200, 204, 198, 248, 35],
+                          [198, 84, 30, 50, 75, 249],
+                          [132, 123, 178, 220, 77, 238]]
 
                 # Store's key for authentication
                 my_keys = [0x77,0x77,0x77,0x77,0x77,0x77]
-                keyA = [hex_list[i] for i in range(0,6)]
-                keyB = [hex_list[i] for i in range(6,12)]
                 
                 
                 # Select the scanned tag
@@ -225,6 +256,7 @@ if __name__=="__main__":
                             
                             # Key Change Routine
                             for i in range(3,64,4):
+                                print i
                                 MIFAREReader = MFRC522.MFRC522()
                                 # Scan for cards    
                                 (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
@@ -233,15 +265,13 @@ if __name__=="__main__":
                                 (status,uid) = MIFAREReader.MFRC522_Anticoll()
 
                                 MIFAREReader.MFRC522_SelectTag(uid)
-                                print keys, uid
-                                random.shuffle(keyA)
-                                random.shuffle(keyB)
+                                print KeyListA[(i+1)/4-1], uid , KeyListB[(i+1)/4-1]
                                 status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, int(i), keys, uid)
                                 if i == 11:
                                         MIFAREReader.MFRC522_Write(i,my_keys+[255,7,128,105]+my_keys)
                                         continue
                                         
-                                MIFAREReader.MFRC522_Write(i,keyA+[255,7,128,105]+keyB)
+                                MIFAREReader.MFRC522_Write(i,KeyListA[(i+1)/4-1]+[255,7,128,105]+KeyListB[(i+1)/4-1])
                                 MIFAREReader.MFRC522_StopCrypto1()
                             MIFAREReader.MFRC522_StopCrypto1()
                             
